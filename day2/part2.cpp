@@ -9,43 +9,52 @@ int main() {
   ifstream file ("data");
   string input;
 
-  // rock   A X
-  // paper  B Y
-  // scisor C Z
+  // rock   A X 1
+  // paper  B Y 2
+  // scisor C Z 3
+  // lose X
+  // draw Y
+  // win  Z
   if (file.is_open()) {
     while (getline(file, input)) {
       //cout << input[0] << " - " << input[2] << endl;
-      switch (input[2]) {
-        case 'X':
-          answer += 1;
-          switch (input[0]) {
-            case 'A':
+      switch (input[0]) {
+        case 'A':
+          switch (input[2]) {
+            case 'X':
               answer += 3;
               break;
-            case 'C':
-              answer += 6;
+            case 'Y':
+              answer += 4;
+              break;
+            case 'Z':
+              answer += 8;
               break;
           }
           break;
-        case 'Y':
-          answer += 2;
-          switch (input[0]) {
-            case 'B':
-              answer += 3;
+        case 'B':
+          switch (input[2]) {
+            case 'X':
+              answer += 1;
               break;
-            case 'A':
-              answer += 6;
+            case 'Y':
+              answer += 5;
+              break;
+            case 'Z':
+              answer += 9;
               break;
           }
           break;
-        case 'Z':
-          answer += 3;
-          switch (input[0]) {
-            case 'C':
-              answer += 3;
+        case 'C':
+          switch (input[2]) {
+            case 'X':
+              answer += 2;
               break;
-            case 'B':
+            case 'Y':
               answer += 6;
+              break;
+            case 'Z':
+              answer += 7;
               break;
           }
           break;
